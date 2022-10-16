@@ -1,6 +1,18 @@
 import icon from '../assets/desktop/icon-sun.svg';
+import { useSelector, useDispatch } from 'react-redux';
+import { useEffect } from 'react';
+import { getCurrentTime } from './slices/clockSlice';
+import dayjs from 'dayjs';
 
 const CurrentTime = () => {
+	const currentInfo = useSelector((state) => state.clock.currentTimeInfo);
+	const dispatch = useDispatch();
+	const time = dayjs(currentInfo.datetime).format('HH:mm');
+
+	useEffect(() => {
+		dispatch(getCurrentTime());
+	}, []);
+
 	return (
 		<div
 			className={`flex flex-col gap-3 w-[278px] h-[185px] ml-8 md:w-[499px] md:h-[231px] lg:max-w-[1110px] lg:ml-[165px] lg:h-[288px] lg:mb-2 2xl:mb-14`}
@@ -13,10 +25,10 @@ const CurrentTime = () => {
 			</div>
 			<div className="relative flex flex-row">
 				<h1 className="font-inter font-bold text-[100px] leading-[100px] tracking-[-2.5px] text-white md:text-[175px] md:leading-[175px] md:tracking-[-4.375px]">
-					11:37
+					{time}
 				</h1>
 				<span className="absolute right-0 bottom-3 uppercase font-light text-[15px] text-white md:text-[32px] md:leading-7 ">
-					bst
+					{currentInfo.abbreviation || ''}
 				</span>
 			</div>
 			<div>

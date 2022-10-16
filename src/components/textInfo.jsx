@@ -15,7 +15,7 @@ const TextInfo = ({ text, info }) => {
 
 TextInfo.propTypes = {
 	text: propTypes.string,
-	info: propTypes.string
+	info: propTypes.oneOfType([propTypes.string, propTypes.number])
 };
 
 TextInfo.defaultProps = {
