@@ -1,17 +1,25 @@
 import icon from '../assets/desktop/icon-sun.svg';
 import { useSelector, useDispatch } from 'react-redux';
 import { useEffect } from 'react';
-import { getCurrentTime } from './slices/clockSlice';
+import { getCurrentTime, getLocationInfo } from './slices/clockSlice';
 import dayjs from 'dayjs';
 
 const CurrentTime = () => {
 	const currentInfo = useSelector((state) => state.clock.currentTimeInfo);
+	const { ip } = currentInfo;
+	const location = useSelector((state) => state.clock.location);
 	const dispatch = useDispatch();
 	const time = dayjs(currentInfo.datetime).format('HH:mm');
 
 	useEffect(() => {
 		dispatch(getCurrentTime());
 	}, []);
+
+	useEffect(() => {
+		if (ip) {
+			dispatch(getLocationInfo(ip));
+		}
+	}, [ip]);
 
 	return (
 		<div
@@ -33,7 +41,7 @@ const CurrentTime = () => {
 			</div>
 			<div>
 				<h1 className="uppercase text-white font-bold text-[15px] leading-7 tracking-[3px] md:text-lg md:leading-7 md:tracking-[3.6px]">
-					in london, uk
+					{`${location?.region || ''}, ${location?.country || ''}`}
 				</h1>
 			</div>
 		</div>

@@ -15,7 +15,7 @@ const Info = () => {
 							<TextInfo text="current timezone" info={timezone} />
 							<TextInfo text="day of the week" info={dayOfWeek} />
 						</div>
-						<div className="flex flex-col gap-4  lg:border-l-2 lg:border-[#303030]/30 lg:pl-28 2xl:pl-48">
+						<div className="flex flex-col gap-4  lg:border-l-2 lg:border-[#303030]/30 lg:pl-16 2xl:pl-30 ">
 							<TextInfo text="day of the year" info={dayOfYear} />
 							<TextInfo text="week number" info={weekNumber} />
 						</div>
