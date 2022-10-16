@@ -37,7 +37,7 @@ const getSchedule = (time) => {
 
 export const getCurrentTime = () => {
 	return (dispatch) => {
-		axios.get('http://worldtimeapi.org/api/ip').then((response) => {
+		axios.get('https://worldtimeapi.org/api/ip').then((response) => {
 			const { data } = response;
 			const schedule = getSchedule(data.datetime);
 			const current = {
