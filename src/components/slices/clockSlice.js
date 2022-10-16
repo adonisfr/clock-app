@@ -1,5 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 import axios from 'axios';
+import dayjs from 'dayjs';
 
 const clockSlice = createSlice({
 	name: 'clock',
@@ -23,12 +24,25 @@ const clockSlice = createSlice({
 
 const { setToggle, setCurrentTime, setLocation } = clockSlice.actions;
 
+const getSchedule = (time) => {
+	const hour = Number(dayjs(time).hour());
+	if (hour >= 5 && hour < 12) {
+		return 'morning';
+	}
+	if (hour >= 12 && hour < 18) {
+		return 'afternoon';
+	}
+	return 'evening';
+};
+
 export const getCurrentTime = () => {
 	return (dispatch) => {
 		axios.get('http://worldtimeapi.org/api/ip').then((response) => {
 			const { data } = response;
+			const schedule = getSchedule(data.datetime);
 			const current = {
 				time: data.datetime,
+				schedule,
 				dayOfWeek: data.day_of_week,
 				dayOfYear: data.day_of_year,
 				timezone: data.timezone,

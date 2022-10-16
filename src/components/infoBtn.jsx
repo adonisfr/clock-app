@@ -6,7 +6,7 @@ const InfoBtn = () => {
 	const toggle = useSelector((state) => state.clock.toggle);
 	const dispatch = useDispatch();
 	return (
-		<div className="flex lg:justify-end lg:items-end lg:h-72 w-[80%] my-10 md:my-20 ml-8 lg:my-0 lg:pb-6 lg:max-w-xl 2xl:pb-10">
+		<div className="flex lg:justify-end lg:items-end lg:h-72 w-[80%] my-10 md:my-20 ml-8 lg:my-0 lg:pb-20 lg:max-w-xl">
 			<button
 				className="flex justify-between rounded-full bg-white pl-3 pr-1 w-[115px] h-[39px] outline-none md:h-[56px] md:w-[146px]"
 				onClick={() => dispatch(setToggle(!toggle))}

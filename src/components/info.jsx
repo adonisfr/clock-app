@@ -9,7 +9,7 @@ const Info = () => {
 	return (
 		<>
 			{toggle && (
-				<div className="flex w-[100vw] bg-[#cbcdcd] backdrop-blur-lg">
+				<div className="flex w-[100vw] bg-[#cbcdcd] dark:bg-black backdrop-blur-lg">
 					<div className="flex flex-col md:flex-row w-[100vw] gap-4 md:gap-24 mt-6 md:items-center justify-center px-5  h-72 md:h-[449px] lg:h-64 lg:gap-48 lg:max-w-[1000px] lg:ml-40 2xl:h-96">
 						<div className="flex flex-col gap-4 ">
 							<TextInfo text="current timezone" info={timezone} />
